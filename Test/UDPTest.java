@@ -9,9 +9,9 @@ public class UDPTest {
     public static void main(String[] argv){
         UDPSocketClient udp_socketClient = new UDPSocketClient();
         try {
-            udp_socketClient.run("Hello Server");
-            Thread.sleep(3000);
-        } catch (IOException | InterruptedException e) {
+            udp_socketClient.setDatagramSocket();
+            udp_socketClient.run("Hello");
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
