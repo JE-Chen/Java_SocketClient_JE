@@ -8,10 +8,17 @@ import java.net.SocketException;
 
 public class UDPSocketClient {
 
-    DatagramSocket datagramSocket;
+    private DatagramSocket datagramSocket;
+    private InetAddress address;
+    private int port;
+    private byte[] buffer;
 
     public void setDatagramSocket() throws SocketException {
         datagramSocket = new DatagramSocket();
+    }
+
+    public void setPort(int port){
+        this.port=port;
     }
 
     public void close(){
@@ -19,9 +26,10 @@ public class UDPSocketClient {
     }
 
     public void run(String message) throws IOException {
-        InetAddress address =InetAddress.getLocalHost();
-        byte[] buffer = message.getBytes();
-        DatagramPacket datagramPacket = new DatagramPacket(buffer,buffer.length,address,5555);
+        //send data
+        address =InetAddress.getLocalHost();
+        buffer = message.getBytes();
+        DatagramPacket datagramPacket = new DatagramPacket(buffer,buffer.length,address,this.port);
         datagramSocket.send(datagramPacket);
     }
 }
