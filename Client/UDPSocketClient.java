@@ -13,11 +13,8 @@ public class UDPSocketClient {
     private int port;
     private byte[] buffer;
 
-    public void setDatagramSocket() throws SocketException {
+    public UDPSocketClient(int port) throws SocketException {
         datagramSocket = new DatagramSocket();
-    }
-
-    public void setPort(int port){
         this.port=port;
     }
 
