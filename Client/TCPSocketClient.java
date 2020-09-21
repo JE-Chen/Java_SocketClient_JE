@@ -48,12 +48,18 @@ public class TCPSocketClient implements Runnable{
             try {
                 Thread.sleep(Test_Time);
                 this.SetSocket();
-                System.out.println(this.SendMessage(this.Socket_ID));
+                System.out.println(this.SendMessage("Hello"));
                 /* TODO 放在需要斷線的時候
                 this.Disconnect();
                  */
             } catch (InterruptedException | IOException e) {
                 e.printStackTrace();
+            }finally {
+                try {
+                    this.Client_Socket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
