@@ -1,4 +1,4 @@
-package com.je_chen.socket_client.Test;
+package Test;
 
 import com.je_chen.socket_client.Client.UDPSocketClient;
 
